@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Planta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoDeEnvase.cs" />
     <Compile Include="TipoDePlanta.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,6 +16,8 @@ namespace Vivero.Data
         public virtual DbSet<Planta> Plantas { get; set; }
         public virtual DbSet<TipoDePlanta> TiposDePlantas { get; set; }
 
+        public virtual DbSet<TipoDeEnvase> TiposDeEnvases { get; set;}
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Planta>()

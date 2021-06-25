@@ -1,20 +1,17 @@
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Vivero.Entities
 {
-    [Table("TiposDePlantas")]
-    public class TipoDePlanta
+    [Table("TiposDeEnvases")]
+    public class TipoDeEnvase
     {
-        
-        public TipoDePlanta()
-        {
-            Plantas = new HashSet<Planta>();
-        }
-
-        [Key]
-        public int TipoDePlantaId { get; set; }
+        public int TipoDeEnvaseId { get; set; }
 
         [Required]
         [StringLength(50)]
