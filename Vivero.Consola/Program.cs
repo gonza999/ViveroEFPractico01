@@ -13,10 +13,113 @@ namespace Vivero.Console
     {
         static void Main(string[] args)
         {
-            GetListTiposDePlantas();
+            //GetListTiposDePlantas();
             //AddNewPlantasWithNewTipoDePlanta();
-            AssigTiposDeEnvases();
+            //AssigTiposDeEnvases();
+            //AddTipoEnvaseIn3Plantas();
+            //AddBorrameTipoDeEnvase();
+            //DeleteBorrame();
+            UpdatePrecioCostoInPlantas();
             System.Console.ReadLine();
+        }
+
+        private static void UpdatePrecioCostoInPlantas()
+        {
+            using (var context=new ViveroDbContext())
+            {
+                var plantas = context.Plantas.ToList();
+                foreach (var p in plantas)
+                {
+                    p.PrecioCosto = p.Precio * 0.5m;
+                }
+
+                context.SaveChanges();
+                System.Console.WriteLine("Precios costos actualizados");
+            }
+        }
+
+        private static void DeleteBorrame()
+        {
+            using (var context=new ViveroDbContext())
+            {
+                var envaseBorrar = "Borrame";
+                var envase = context.TiposDeEnvases.SingleOrDefault(t => t.Descripcion == envaseBorrar);
+                if (envase==null)
+                {
+                    System.Console.WriteLine("Tipo de envase inexistente");
+                    return;
+                    
+                }
+
+                context.TiposDeEnvases.Remove(envase);
+                context.SaveChanges();
+                System.Console.WriteLine("Envase borrado con exito");
+            }
+        }
+
+        private static void AddBorrameTipoDeEnvase()
+        {
+            using (var context=new ViveroDbContext())
+            {
+                TipoDeEnvase tipoDeEnvase = new TipoDeEnvase()
+                {
+                    Descripcion = "Borrame"
+                };
+                context.TiposDeEnvases.Add(tipoDeEnvase);
+                context.SaveChanges();
+                System.Console.WriteLine("Tipo de envase agregado con exito");
+
+
+                Random r = new Random();
+                var cantidadCambios = 0;
+                do
+                {
+                    var plantaid = r.Next(167, 328);
+                    var planta = context.Plantas.FirstOrDefault(p => p.PlantaId == plantaid);
+                    if (planta != null)
+                    {
+                        planta.TipoDeEnvaseId = tipoDeEnvase.TipoDeEnvaseId;
+                        cantidadCambios++;
+                        System.Console.WriteLine($"{planta.Descripcion}");
+                        System.Console.WriteLine($"Cambio procesado. Cantidad de cambios procesados : {cantidadCambios}");
+                    }
+                } while (cantidadCambios < 2);
+
+                context.SaveChanges();
+            }
+        }
+
+        private static void AddTipoEnvaseIn3Plantas()
+        {
+            using (var context=new ViveroDbContext())
+            {
+                var envaseBuscado = "Envase Plastico";
+                var tipoEnvase = 
+                    context.TiposDeEnvases.FirstOrDefault(t =>
+                        t.Descripcion == envaseBuscado);
+                if (tipoEnvase==null)
+                {
+                    System.Console.WriteLine("Tipo de envase inexistente");
+                    return;
+                }
+
+                Random r = new Random();
+                var cantidadCambios = 0;
+                do
+                {
+                    var plantaid = r.Next(167, 328);
+                    var planta = context.Plantas.FirstOrDefault(p => p.PlantaId == plantaid);
+                    if (planta != null)
+                    {
+                        planta.TipoDeEnvaseId = tipoEnvase.TipoDeEnvaseId;
+                        cantidadCambios++;
+                        System.Console.WriteLine($"Cambio procesado. Cantidad de cambios procesados : {cantidadCambios}");
+                    } 
+                } while (cantidadCambios<3); 
+                
+                context.SaveChanges();
+                System.Console.WriteLine("Cambios realizados");
+            }
         }
 
         private static void AssigTiposDeEnvases()

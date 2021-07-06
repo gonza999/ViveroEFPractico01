@@ -69,6 +69,18 @@
     <Compile Include="Migrations\202106250249216_CreateRelationPlantasEnvases.designer.cs">
       <DependentUpon>202106250249216_CreateRelationPlantasEnvases.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107060146588_DisableOneToManyCascadeDeleteConvention.cs" />
+    <Compile Include="Migrations\202107060146588_DisableOneToManyCascadeDeleteConvention.designer.cs">
+      <DependentUpon>202107060146588_DisableOneToManyCascadeDeleteConvention.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107060150326_addPrecioCostoInPlantas.cs" />
+    <Compile Include="Migrations\202107060150326_addPrecioCostoInPlantas.designer.cs">
+      <DependentUpon>202107060150326_addPrecioCostoInPlantas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107060200577_ChangePrecioToPrecioVentaInPlantas.cs" />
+    <Compile Include="Migrations\202107060200577_ChangePrecioToPrecioVentaInPlantas.designer.cs">
+      <DependentUpon>202107060200577_ChangePrecioToPrecioVentaInPlantas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViveroDbContext.cs" />
@@ -94,6 +106,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106250249216_CreateRelationPlantasEnvases.resx">
       <DependentUpon>202106250249216_CreateRelationPlantasEnvases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107060146588_DisableOneToManyCascadeDeleteConvention.resx">
+      <DependentUpon>202107060146588_DisableOneToManyCascadeDeleteConvention.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107060150326_addPrecioCostoInPlantas.resx">
+      <DependentUpon>202107060150326_addPrecioCostoInPlantas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107060200577_ChangePrecioToPrecioVentaInPlantas.resx">
+      <DependentUpon>202107060200577_ChangePrecioToPrecioVentaInPlantas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

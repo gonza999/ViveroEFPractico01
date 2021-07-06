@@ -14,9 +14,11 @@ namespace Vivero.Entities
 
         public int TipoDePlantaId { get; set; }
 
-        public decimal Precio { get; set; }
+        public decimal PrecioVenta { get; set; }
 
         public int TipoDeEnvaseId { get; set; }
+
+        public decimal PrecioCosto { get; set; }
 
         public virtual TipoDeEnvase TipoDeEnvase { get; set; }
 
